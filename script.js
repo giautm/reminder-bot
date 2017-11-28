@@ -1,6 +1,5 @@
+require('isomorphic-fetch')
 module.exports = function (context, cb) {
-  const fetch = require('node-fetch');
-
   const botToken = context.secrets.BOT_TOKEN;
   const chatID = context.secrets.CHAT_ID;
   const text = context.secrets.MESSAGE_TEXT;
@@ -15,6 +14,6 @@ module.exports = function (context, cb) {
       text,
     }),
   }).then((response) => response.json()).then((data) => {
-    cd(null, data);
+    cb(null, data);
   }).catch(err => cb(err));
 };
